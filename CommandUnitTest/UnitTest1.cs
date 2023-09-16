@@ -90,6 +90,96 @@ namespace CommandUnitTest
         }
 
         /// <summary>
+        /// Tests the behavior of moving the car forward using Remote Control (invoker).
+        /// </summary>
+        [TestMethod]
+        public void MovingForwardTestWithInvoker()
+        {
+            Car car = new();
+
+            int initialY = car.Position.Y;
+
+            ICommand moveForwardCommand = new MoveForward( car );
+
+            RemoteControl remoteControl = new();
+            remoteControl.SetCommand( 0 , moveForwardCommand );
+
+            remoteControl.PressButton( 0 );
+
+            Assert.AreEqual( initialY + 1 , car.Position.Y );
+        }
+
+        /// <summary>
+        /// Tests the behavior of moving the car left using Remote Control (invoker).
+        /// </summary>
+        [TestMethod]
+        public void MovingLeftTestWithInvoker()
+        {
+            Car car = new();
+
+            int initialX = car.Position.X;
+
+            ICommand moveLeftCommand = new MoveLeft( car );
+
+            RemoteControl remoteControl = new();
+            remoteControl.SetCommand( 1 , moveLeftCommand );
+
+            remoteControl.PressButton( 1 );
+
+            Assert.AreEqual( initialX - 1 , car.Position.X );
+        }
+
+        /// <summary>
+        /// Tests the behavior of moving the car right using Remote Control (invoker).
+        /// </summary>
+        [TestMethod]
+        public void MovingRightTestWithInvoker()
+        {
+            Car car = new();
+
+            int initialX = car.Position.X;
+
+            ICommand moveRightCommand = new MoveRight( car );
+
+            RemoteControl remoteControl = new();
+            remoteControl.SetCommand( 2 , moveRightCommand );
+
+            remoteControl.PressButton( 2 );
+
+            Assert.AreEqual( initialX + 1 , car.Position.X );
+        }
+
+        /// <summary>
+        /// Tests the behavior of stopping the car using Remote Control (invoker).
+        /// </summary>
+        [TestMethod]
+        public void StopTestWithInvoker()
+        {
+            Car car = new();
+
+            int initialY = car.Position.Y;
+            int initialX = car.Position.X;
+
+            ICommand stopCommand = new Stop( car );
+
+            RemoteControl remoteControl = new();
+            remoteControl.SetCommand( 3 , stopCommand );
+
+            remoteControl.PressButton( 3 );
+
+            Assert.AreEqual( initialX , car.Position.X );
+
+            if (car._isMoving == true)
+            {
+                Assert.AreEqual( initialY , car.Position.Y );
+            }
+            else
+            {
+                Assert.AreEqual( initialY - 1 , car.Position.Y );
+            }
+        }
+
+        /// <summary>
         /// Tests the behavior of moving the car forward directly (without commands).
         /// </summary>
         [TestMethod]
