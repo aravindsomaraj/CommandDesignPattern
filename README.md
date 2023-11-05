@@ -9,11 +9,14 @@ The example we're using to demonstrate the Command Design Pattern is that of a r
 
 ## Components Involved
 
-- **Command** : Declares an interface for executing an operation. *ICommand* is used here as the interface.
-- **Receiver** : Carries out the actual operations associated with performing the request. *Car* is our Receiver object here. It contains methods like *MoveForward()*, *MoveLeft()*, *MoveRight()*, and *Stop()*, which define how the car behaves in response to commands.
-- **ConcreteCommand** : Defines a binding between the Receiver object and a corresponding action. It implements the *Execute()* function by invoking the corresponding operation(s) on Receiver. The classes in the *Actions* directory are our ConcreteCommand classes.
-- **Invoker** : The *RemoteControl* class is our invoker here. It contains switches that correspond to different commands that can be set. When clicked, *RemoteControl* invokes the corresponding command without knowing the details of how the command is executed.
+- ``Command`` : Declares an interface for executing an operation. `ICommand` is used here as the interface.
+- ``Receiver`` : Carries out the actual operations associated with performing the request. `Car` is our Receiver object here. It contains methods like `MoveForward()`, `MoveLeft()`, `MoveRight()`, and `Stop()`, which define how the car behaves in response to commands.
+- ``ConcreteCommand`` : Defines a binding between the Receiver object and a corresponding action. It implements the `Execute()` function by invoking the corresponding operation(s) on Receiver. The classes in the *Actions* directory are our ConcreteCommand classes.
+- ``Invoker`` : The `RemoteControl` class is our invoker here. It contains switches that correspond to different commands that can be set. When clicked, *RemoteControl* invokes the corresponding command without knowing the details of how the command is executed.
 
 ## Class diagram
 
 ![Class Diagram](umldiag.png)
+
+## Environment
+The project builds and runs with Visual Studio Community 2022.
