@@ -16,4 +16,4 @@ The example we're using to demonstrate the Command Design Pattern is that of a r
 
 ## Class diagram
 
-![Class Diagram](class.jpeg)
+![Class Diagram](umldiag.png)
